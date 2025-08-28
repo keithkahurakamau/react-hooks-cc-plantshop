@@ -13,7 +13,7 @@ function PlantCard({ plant, onUpdatePlant, onDeletePlant }) {
     fetch(`http://localhost:6001/plants/${plant.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "Application/JSON",
       },
       body: JSON.stringify({ price: parseFloat(price) }),
     })
@@ -45,7 +45,7 @@ function PlantCard({ plant, onUpdatePlant, onDeletePlant }) {
           <button onClick={() => setIsEditing(false)}>Cancel</button>
         </div>
       ) : (
-        <p>Price: ${plant.price}</p>
+        <p>Price: {plant.price.toFixed(2)}</p>
       )}
       {isSoldOut ? (
         <button>Out of Stock</button>

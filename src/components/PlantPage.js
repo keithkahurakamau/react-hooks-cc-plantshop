@@ -20,7 +20,11 @@ function PlantPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newPlant),
+      body: JSON.stringify({
+        name: newPlant.name,
+        image: newPlant.image,
+        price: parseFloat(newPlant.price), // Ensure price is a number
+      }),
     })
       .then((response) => response.json())
       .then((data) => {

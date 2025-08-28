@@ -18,18 +18,23 @@ function PlantPage() {
     fetch("http://localhost:6001/plants", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "Application/JSON",
       },
       body: JSON.stringify({
         name: newPlant.name,
         image: newPlant.image,
-        price: parseFloat(newPlant.price), // Ensure price is a number
+        price: newPlant.price, // Send price as a string
       }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log("New plant added:", data);
-        setPlants([...plants, data]);
+        // Convert price to number if it's a string
+        const plantWithNumberPrice = {
+          ...data,
+          price: typeof data.price === 'string' ? parseFloat(data.price) : data.price
+        };
+        setPlants([...plants, plantWithNumberPrice]);
       })
       .catch((error) => console.error("Error adding plant:", error));
   };

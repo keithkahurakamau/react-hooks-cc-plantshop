@@ -45,7 +45,7 @@ function PlantCard({ plant, onUpdatePlant, onDeletePlant }) {
           <button onClick={() => setIsEditing(false)}>Cancel</button>
         </div>
       ) : (
-        <p>Price: {plant.price.toFixed(2)}</p>
+        <p>Price: {plant.price.toString()}</p>
       )}
       {isSoldOut ? (
         <button>Out of Stock</button>
